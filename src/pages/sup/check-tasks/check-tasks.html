@@ -1,0 +1,100 @@
+<!--
+  Generated template for the CheckTasksPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>CheckTasks</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <ion-buttons right>
+            <button  ion-button icon-only *ngIf="checkStds" (click)="showMsgInput()">
+                    <ion-icon name="create"></ion-icon>
+            </button>
+
+            <button  ion-button icon-end outline color="danger" *ngIf="!checkStds" (click)="showFilter()">
+                 <ion-icon name="funnel" ></ion-icon> 
+                تصفية
+            </button>
+
+            <button  ion-button icon-end outline *ngIf="!checkStds" (click)="goToAddTaskPage()">
+                 <!--<ion-icon name="add-circle" color="secondary"></ion-icon> -->
+                اضافة مهمة
+            </button>
+    </ion-buttons>
+    
+    <ion-buttons left>
+            <button ion-button icon-end outline *ngIf="!checkStds" (click)="openCheckStds()">
+                    <ion-icon name="checkbox-outline"></ion-icon> &nbsp;
+                     تحديد 
+            </button>
+
+        
+            <button  ion-button icon-only *ngIf="checkStds" (click)="closeCheckStds()">
+                    <ion-icon color="danger" name="close-circle"></ion-icon>
+            </button>
+            <button margin-right  ion-button icon-only *ngIf="checkStds" (click)="allCheckStds()">
+                    تحديد الكل
+            </button>
+
+            <button color="secondary"  ion-button *ngIf="checkStds" (click)="closeCheckStds()" margin-left outline>
+                نفذ
+            </button>
+
+            <button color="warning"  ion-button *ngIf="checkStds" (click)="closeCheckStds()" margin-left outline>
+                لم ينفذ
+            </button>
+
+            <button color="danger"  ion-button *ngIf="checkStds" (click)="closeCheckStds()" margin-left outline>
+                خصم
+            </button>
+
+    </ion-buttons>
+</ion-toolbar>
+
+</ion-header>
+
+
+<ion-content dir="rtl">
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+
+    <ion-list>
+        <div *ngFor="let task of stds_tasks">
+            <ion-item-sliding #item *ngIf="task.task_id == filterTask || filterTask == -1">
+                <ion-item>
+                    <ion-checkbox *ngIf="checkStds" [(ngModel)]="task.checked"></ion-checkbox>
+                    <ion-label>
+                        <h2>{{ task.name1 + ' ' + task.name2 + ' ' + task.name4 }}</h2>
+                        <p>{{ task.team_name }}</p>
+                        <p>{{ task.name }}</p>
+                    </ion-label>
+
+                    <button ion-button item-end color="secondary" (click)="post_stask(task, 1)">
+                        نفذ
+                    </button>
+                    <button ion-button item-end color="warning" (click)="post_stask(task, 2)">
+                        لم ينفذ
+                    </button>
+                    <button ion-button item-end color="danger" (click)="post_stask(task, 3)">
+                        خصم
+                    </button>
+                </ion-item>
+
+
+                <ion-item-options expandable end side="right">
+                    <button ion-button color="danger" (click)="remove(task)">
+                        <ion-icon name="trash"></ion-icon>
+                    </button>
+                </ion-item-options>
+            </ion-item-sliding>
+        </div>
+      </ion-list>
+
+</ion-content>

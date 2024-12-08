@@ -1,0 +1,75 @@
+<!--
+  Generated template for the RegisterPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>اشتراك مشرف</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <br/>
+    <br/>
+    <div class="bold title" text-center>
+      الاشتراك للمشرف الرئيسي , ويمكن بعد ذلك انشاء اكثر من مشرف فرعي من لوحة التحكم
+    </div>
+    <br/>
+    <hr/>
+  
+  
+  
+    <ion-list no-lines>
+      
+      <form [formGroup]="loginForm" (submit)="registerUser()" novalidate>
+
+        <ion-item>
+            <ion-label stacked>اسم الموقع</ion-label>
+            <ion-input (ionFocus)="focusName = true" (ionBlur)="focusName = false" dir="rtl" formControlName="name" type="text" [class.invalid]="!loginForm.controls.name.valid" title="اسم المدرسة او الحلقه او النشاط الذي سيظهر للزوار"  placeholder="اسم الموقع هنا"></ion-input>
+        </ion-item>
+
+        <ion-item *ngIf="focusName" class="info">
+            <p>اسم المدرسة او الحلقه او النشاط الذي سيظهر للزوار</p>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>اسم المشرف</ion-label>
+            <ion-input dir="rtl" formControlName="p_name" type="text" [class.invalid]="!loginForm.controls.p_name.valid"  placeholder="اسم المشرف هنا"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label stacked>رقم الجوال</ion-label>
+            <ion-input dir="rtl" formControlName="mobile" type="tel" [class.invalid]="!loginForm.controls.mobile.valid"  placeholder="05XXXXXXXX"></ion-input>
+        </ion-item>
+    
+  
+        <ion-item>
+          <ion-label stacked>اسم المستخدم</ion-label>
+          <ion-input dir="rtl" formControlName="username" type="text" [class.invalid]="!loginForm.controls.username.valid"  placeholder="اسم المستخدم هنا"></ion-input>
+        </ion-item>
+  
+        <ion-item *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty">
+            <p>الرجاء كتابة اسم المستخدم بالشكل الصحيح, واحرف انجليزية فقط</p>
+        </ion-item>
+  
+        <ion-item>
+          <ion-label stacked>كلمة المرور</ion-label>
+          <ion-input dir="rtl" formControlName="password" type="password" placeholder="كلمة المرور هنا" 
+            [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+        </ion-item>
+        <br/>
+  
+        <button ion-button block type="submit" [disabled]="!loginForm.valid">
+          تسجيل جديد
+        </button>
+  
+      </form>
+    </ion-list>
+
+</ion-content>

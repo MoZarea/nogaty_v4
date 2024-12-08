@@ -1,0 +1,33 @@
+
+<ion-header>
+        <ion-navbar>
+          <ion-title>نقاطي</ion-title>
+        </ion-navbar>
+</ion-header>
+
+<ion-content dir="rtl">
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-list *ngFor="let task of tasks , let i = index">
+
+        <ion-list-header class="taskTitle" text-right>
+            {{ task[0].cname }}
+          </ion-list-header>
+      
+          <ion-item *ngFor="let item of task , let i2 = index" padding-right>
+              <button *ngIf="item.count > 0 && item.retake > 0" ion-button item-end (click)="selectTask(item.id)">اختيار</button>
+              <ion-note *ngIf="item.count <= 0 || item.retake <= 0" item-end>اكتمل العدد</ion-note>
+
+              <ion-label text-right>
+                  {{ item.name }}
+              </ion-label>
+            
+          </ion-item>
+    </ion-list>
+      
+      
+      
+</ion-content>

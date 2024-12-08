@@ -1,0 +1,26 @@
+page-register {
+
+    ion-img{
+        background: transparent;
+    }
+
+    .title{
+        color: #777;
+        font-size: 120%;
+    }
+
+    ion-label{
+        color: #777 !important;
+        font-weight: bold;
+    }
+
+    .input-has-focus ion-label{
+        color: #3A88FC !important;
+        font-weight: bold;
+    }
+
+    .info p{
+        color: #3A88FC !important;
+    }
+
+}

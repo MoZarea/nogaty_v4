@@ -1,0 +1,25 @@
+page-hello-ionic {
+
+    .main_title{
+        color: #333;
+        font-weight: bolder;
+        font-size: 130%;
+      /*  background: #488aff; */
+      
+        background: url('/assets/imgs/bg.jpg') left bottom;
+        background-size: 100%;
+    }
+
+    .sub_title{
+        color: #488aff;
+        font-weight: bolder;
+        font-size: 130%;
+        background: #f8f8f8;
+    }
+
+    .myTaskCard{
+        border: 1px solid #bbb;
+    }
+
+    
+}

@@ -1,0 +1,64 @@
+<ion-menu [content]="content" swipeEnabled="false">
+
+  <ion-header>
+    <ion-toolbar class="main_toolbar">
+      <ion-title>قائمة</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content dir="rtl">
+    <ion-list>
+      <button *ngFor="let user of users" ion-item  (click)="openPage('')" class="username">
+          <ion-icon name="person" item-start></ion-icon>
+          {{ user.info.name1 }} {{ user.info.name2}}
+      </button>
+
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+          صفحات الموقع
+        </ion-list-header>
+  
+        <button ion-item *ngFor="let p of stdPages" (click)="openSocail(p.link)">
+            <ion-icon name="{{p.icon}}" color="{{p.color}}" item-start></ion-icon>
+            {{p.title}}
+        </button>
+  
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            قنوات التواصل
+          </ion-list-header>
+    
+          <button ion-item *ngFor="let p of pages" (click)="openSocail(p.link)">
+              <ion-icon name="{{p.icon}}" color="{{p.color}}" item-start></ion-icon>
+              {{p.title}}
+          </button>
+    
+    </ion-list>
+
+    <ion-list>
+        <ion-list-header>
+            عام
+          </ion-list-header>
+    
+          <button ion-item (click)="openSocail('http://nogaty.com/')">
+              <ion-icon name="call" color="secondary" item-start></ion-icon>
+              اتصل بنا
+          </button>
+    
+          <button ion-item  (click)="logout()">
+              <ion-icon name="log-out" color="danger" item-start></ion-icon>
+              تسجيل الخروج
+          </button>
+          
+          
+    </ion-list>
+
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

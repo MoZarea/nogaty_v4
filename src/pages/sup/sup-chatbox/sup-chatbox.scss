@@ -1,0 +1,87 @@
+page-sup-chatbox {
+
+
+    .chatBlock{
+        clear: both;
+        justify-content: flex-end;
+        align-items: flex-end;
+        display: flex;
+    }
+
+
+    .backImg{
+        background: transparent url('../assets/imgs/confectionary.png') fixed center !important;
+    }
+
+    ion-toolbar .toolbar-background{
+        background-color: transparent !important;
+    }
+
+    .send_btn{
+        color: #075e54;
+        border: none;
+    }
+
+    .chatContent span.time{
+        color: #888;
+        padding: 0 2px;
+        font-size: 90%;
+        direction: rtl;
+    }
+
+    .others{
+        flex-direction: row; 
+        text-align: right;
+        flex-wrap: wrap;
+        margin-top: 3px;
+    }
+
+    .me{
+        flex-direction: row-reverse; 
+        text-align: left;
+        flex-wrap: wrap;
+        margin-top: 3px;
+    }
+
+    .others .text{
+        background: #f8f8f8;
+      /*  float: left; */
+    }
+
+    .me .text{
+        background: #dcf8c6;
+     /*   float: right; */
+    }
+
+    .textChat{
+        max-width: 85%;
+        width: auto;
+        display: inline-block;
+        text-align: right;
+        color: #555;
+        margin: 0px;
+        flex-wrap: wrap;
+
+        -webkit-user-select: text; /* Safari 3.1+ */
+        -moz-user-select: text; /* Firefox 2+ */
+        -ms-user-select: text; /* IE 10+ */
+        user-select: text; /* Standard syntax */
+    }
+
+    .textChat ion-card-content{
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .msg{
+    }
+
+    .person{
+        color: red;
+    }
+
+    .chatContent .scroll-content{
+        padding-bottom: 35px !important;
+    }
+
+}

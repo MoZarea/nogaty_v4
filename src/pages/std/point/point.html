@@ -1,0 +1,55 @@
+
+<ion-header>
+    <ion-navbar>
+      <ion-title>نقاطي</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+<ion-content padding>
+
+    <div padding>
+                <button ion-button icon-only color="danger"  (click)="readBarcode()">
+                    <ion-icon name="ios-barcode-outline"></ion-icon>
+                </button>
+    </div>
+
+    <ion-list>
+        
+          <ion-item>
+            <ion-label stacked text-right color="danger">الرمز</ion-label>
+            <ion-input text-right type="number" [(ngModel)]="code" placeholder="ادخل هنا الرمز المدون في الورقة"></ion-input>
+          </ion-item>
+        
+    </ion-list>
+
+        <div padding>
+            <button ion-button color="primary" block (click)="addPoint()">اضغط هنا لإضافة النقاط</button>
+        </div>
+
+        
+
+      <div text-center>
+          <img src="assets/imgs/gifts-icon.png" />
+      </div>
+      
+
+      <ion-list>
+
+          <ion-item-divider color="light">
+              <span item-start><span class="gift_title">مجموع النقاط:</span> <span class="points bold">{{ total_points }}</span></span>
+              <span item-end><span class="gift_title">المستخدم:</span> <span class="points bold">{{ used_points }}</span></span>
+        </ion-item-divider>
+          
+          <ion-item *ngFor="let gift of gifts">
+              <button ion-button item-end *ngIf="gift.taken == -1" (click)="selectGift(gift.id)">اختيار</button>
+              <ion-note item-end *ngIf="gift.taken == 1">تم التسليم</ion-note>
+
+              <h2>{{ gift.name }}</h2>
+              <h3>{{ gift.des }}</h3>
+              <p>الرصيد المطلوب: {{ gift.points }}</p>
+          </ion-item>
+
+      </ion-list>
+
+</ion-content>

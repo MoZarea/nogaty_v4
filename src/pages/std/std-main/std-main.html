@@ -1,0 +1,24 @@
+<ion-header>
+        <ion-navbar>
+          <button ion-button icon-only menuToggle>
+            <ion-icon color="primary" name="menu"></ion-icon>
+          </button>
+          <ion-title class="title" style="color: #488aff">نقاطي</ion-title>
+      
+          <ion-buttons end>
+              <button (click)="chatPage()" ion-button icon-only>
+                    <ion-badge color="secondary" *ngIf="total > 0">{{ total }}</ion-badge>
+                    <ion-icon end name="chatboxes" color="primary"></ion-icon>
+                    محادثة
+              </button>
+          </ion-buttons>
+        </ion-navbar>
+        
+</ion-header>
+
+<ion-tabs>
+    <ion-tab [root]="homeRoot" tabTitle="صفحتي" tabIcon="home" tabColor="danger"></ion-tab>
+    <ion-tab [root]="selectTaskRoot" tabTitle="اختيار مهمه" tabIcon="calendar"></ion-tab>
+    <ion-tab [root]="pointRoot" tabTitle="اضافة نقطه" tabIcon="star"></ion-tab>
+    <ion-tab [root]="degreeRoot" tabTitle="درجاتي" tabIcon="school"></ion-tab>
+</ion-tabs>

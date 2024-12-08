@@ -1,0 +1,30 @@
+page-login {
+
+    ion-img{
+        background: transparent;
+    }
+
+    ion-label{
+        font-size: 150%;
+    }
+
+    p {
+       /* font-size: 0.8em; */
+        color: #d2d2d2;
+    }
+
+
+
+    ion-input, ion-select, ion-textarea {
+      /*  background-color: #f2f2f2; */
+      /*  padding: 5px 10px; */
+    }
+
+    ion-input{
+      /*  border: 1px solid #f2f2f2; */
+    }
+
+    .invalid {
+       /* border: 1px solid #ea6153; */
+    }
+}

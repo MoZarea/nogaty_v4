@@ -1,0 +1,100 @@
+<!--
+  Generated template for the SupDegreePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>supDegree</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content dir="rtl" >
+
+    <ion-list padding-left padding-right padding-top no-margin>
+        <ion-item>
+          <ion-label>تقييم</ion-label>
+          <ion-select [(ngModel)]="select" interface="popover" placeholder="اختيار النوع">
+            <div *ngFor="let item of committees, let i = index" placeholder="اختيار النوع">
+                <ion-option value="{{[item.id,0]}}" disabled="true" color="danger">{{item.name}}</ion-option>
+
+                <ion-option value="{{[item.id,1]}}" *ngIf="item.val1.length > 0">{{item.val1}}</ion-option>
+                <ion-option value="{{[item.id,2]}}" *ngIf="item.val2.length > 0">{{item.val2}}</ion-option>
+                <ion-option value="{{[item.id,3]}}" *ngIf="item.val3.length > 0">{{item.val3}}</ion-option>
+                <ion-option value="{{[item.id,4]}}" *ngIf="item.val4.length > 0">{{item.val4}}</ion-option>
+                <ion-option value="{{[item.id,5]}}" *ngIf="item.val5.length > 0">{{item.val5}}</ion-option>
+            </div>
+          </ion-select>
+          <ion-select [(ngModel)]="week" interface="popover" placeholder="الإسبوع">
+                <ion-option *ngFor="let w of weeks, let i = index" value="{{ w }}"  >{{ w }}</ion-option>
+            </ion-select>
+        </ion-item>
+        <ion-item inset>
+            <button ion-button color="dark" block (click)="getDegree()">اختيار</button>
+        </ion-item>
+    </ion-list>
+
+    <ion-grid>
+        <ion-row>
+            <ion-col col-4 align-self-center>
+                <button ion-button outline icon-start  (click)="showFilter()">
+                    <ion-icon  name="funnel"></ion-icon>
+                    تصفية 
+                </button>
+            </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    <div *ngIf="submit">
+      <ion-list>
+
+          <ion-grid class="submitForAll">
+              <ion-row>
+                  <ion-col col-3 align-self-center><button ion-button color="primary" (click)="setDegreeforAll()">تعميم</button></ion-col>
+                  <ion-col col-3><ion-input margin-right class="input-degree" text-right type="number" [(ngModel)]="degreeForAll">{{ degreeForAll }}</ion-input></ion-col>
+              </ion-row>
+          </ion-grid>
+          <!--
+          <ion-item *ngFor="let std of stdsMarks, let i = index">
+            <ion-label color="dark">{{ std.name1 + ' ' + std.name4}}</ion-label>
+            <ion-input col-4 left class="input-degree" text-right type="number" [(ngModel)]="std.degree">{{ std.degree }}</ion-input>
+          </ion-item>
+        -->
+
+          <ion-grid class="stds_list" *ngFor="let team of teams, let i = index">
+            <ion-row justify-content-around>
+                <ion-col col-12 align-self-center no-padding>
+                  <ion-list-header color="gray">
+                      {{ team.name }}
+                  </ion-list-header>
+                </ion-col>
+            </ion-row>
+            <div *ngFor="let std of team.stds">
+              <ion-row justify-content-around *ngIf="std.show">
+                <ion-col col-6 align-self-center>{{ std.name }}</ion-col>
+                <ion-col col-3><ion-input left class="input-degree" text-right type="number" [(ngModel)]="std.degree">{{ std.degree }}</ion-input></ion-col>
+              </ion-row>
+            </div>
+          </ion-grid>
+<!--
+            <ion-grid class="stds_list" *ngFor="let std of stdsMarks, let i = index">
+              <ion-row justify-content-around>
+                <ion-col col-6 align-self-center>{{ std.name1 + ' ' + std.name2 + ' ' + std.name4}}</ion-col>
+                <ion-col col-3><ion-input left class="input-degree" text-right type="number" [(ngModel)]="std.degree">{{ std.degree }}</ion-input></ion-col>
+              </ion-row>
+            </ion-grid>
+          -->
+      </ion-list>
+
+      <div padding>
+          <button ion-button color="primary" (click)="postDegree()" block>حفظ</button>
+        </div>
+
+    </div>
+
+
+</ion-content>

@@ -1,0 +1,62 @@
+<!--
+  Generated template for the DegreePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <ion-title>درجاتي</ion-title>
+    </ion-navbar>
+    
+  </ion-header>
+
+
+<ion-content padding>
+
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+    <ion-card>
+        <ion-item text-right>
+                <h2>المجموع</h2>
+                <ion-note item-end class="degree">{{ total }}</ion-note>
+       </ion-item>
+    </ion-card>
+
+
+    <ion-card text-right>
+        <ion-card-header class="title">
+          نقاطي
+        </ion-card-header>
+      
+        <ion-list>
+            <ion-item *ngFor="let point of points" text-right>
+                <h2>{{ point.title }}</h2>
+                <p>{{ point.us_name }}</p>
+                <ion-note item-end class="degree">{{ point.point }}</ion-note>
+            </ion-item>
+        </ion-list>
+    </ion-card>
+
+
+    <ion-card *ngFor="let w of weeks"  text-right>
+        <ion-card-header class="title">
+          الإسبوع {{ w }}
+        </ion-card-header>
+      
+        <ion-list>
+            <button ion-item *ngFor="let d of degrees[w]" (click)="weekDeg(d)" text-right>
+                <h2>{{ d.active == 0 ? d.name:d.cname }}</h2>
+                <ion-note item-end class="degree">{{ d.active == 0 ? d.stdegree:d.total }}</ion-note>
+            </button>
+            <ion-item *ngFor="let t of tasks[w]" text-right>
+                <h2>{{ t.name }}</h2>
+                <ion-note item-end class="degree">{{ t.stdegree }}</ion-note>
+            </ion-item> 
+        </ion-list>
+    </ion-card>
+
+
+</ion-content>

@@ -1,0 +1,83 @@
+<!--
+  Generated template for the LoginPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header dir="rtl">
+<!--
+  <ion-navbar>
+    <ion-title>الدخول الى نقاطي</ion-title>
+  </ion-navbar>
+-->
+</ion-header>
+
+
+<ion-content padding dir="rtl">
+  <br/>
+  <br/>
+  <br/>
+  <br/>
+  <div text-center>
+    <ion-img clear  alt="نقاطي" width="150" height="78" src="assets/imgs/nogaty.png"></ion-img>
+  </div>
+  <br/>
+  <br/>
+  <hr/>
+
+      <ion-segment margin-bottom [(ngModel)]="loginAs" color="primary">
+        <ion-segment-button value="std">
+           طالب
+        </ion-segment-button>
+        <ion-segment-button value="supervisor">
+          مشرف
+        </ion-segment-button>
+      </ion-segment>
+
+
+  <ion-list no-lines>
+    
+    <form [formGroup]="loginForm" (submit)="loginUser()" novalidate>
+
+      <ion-item>
+        <ion-label stacked>اسم المستخدم</ion-label>
+        <ion-input dir="rtl" formControlName="username" type="text" [class.invalid]="!loginForm.controls.username.valid"  placeholder="اسم المستخدم هنا"></ion-input>
+      </ion-item>
+
+      <ion-item *ngIf="!loginForm.controls.username.valid && loginForm.controls.username.dirty">
+          <p>الرجاء كتابة اسم المستخدم بالشكل الصحيح</p>
+      </ion-item>
+
+      <ion-item>
+        <ion-label stacked>كلمة المرور</ion-label>
+        <ion-input dir="rtl" formControlName="password" type="password" placeholder="كلمة المرور هنا" 
+          [class.invalid]="!loginForm.controls.password.valid && loginForm.controls.password.dirty"></ion-input>
+      </ion-item>
+      <br/>
+
+      <button ion-button block type="submit" [disabled]="!loginForm.valid">
+        تسجيل الدخول
+      </button>
+
+    </form>
+  </ion-list>
+  <br/>
+
+
+  <button ion-button outline (click)="openRegister()">
+      إنشاء حساب في نقاطي للمشرفين
+  </button>
+  
+
+  <!--
+  <button ion-button block clear (click)="goToResetPassword()">
+    نسيت الرقم السري
+  </button>
+
+  <button ion-button block clear (click)="goToSignup()">
+      انشاء مستخدم جديد
+    </button>
+  -->
+
+
+</ion-content>
